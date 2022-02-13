@@ -25,98 +25,100 @@ class _SplashScreenState extends State<SplashScreen> {
         fontSize: 35,
         fontWeight: FontWeight.bold);
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Align(
-                alignment: Alignment.topRight,
-                child: TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    "Skip?",
-                    style: Theme.of(context).textTheme.headline6,
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Align(
+                  alignment: Alignment.topRight,
+                  child: TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "Skip?",
+                      style: Theme.of(context).textTheme.headline6,
+                    ),
+                  )),
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 5,
+              ),
+              DelayedDisplay(
+                  delay: Duration(seconds: 1),
+                  slidingBeginOffset: Offset(0.0, -0.35),
+                  child: Text("Welcome",
+                      style: titleSryle.copyWith(
+                          color: Colors.black, fontWeight: FontWeight.normal))),
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 10,
+              ),
+              DelayedDisplay(
+                delay: Duration(seconds: 2),
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 40),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "RE",
+                        style: titleSryle,
+                      ),
+                      Icon(
+                        Icons.redo,
+                        color: Colors.red,
+                        size: 50,
+                      ),
+                    ],
                   ),
-                )),
-            SizedBox(
-              height: MediaQuery.of(context).size.height / 5,
-            ),
-            DelayedDisplay(
-                delay: Duration(seconds: 1),
-                slidingBeginOffset: Offset(0.0, -0.35),
-                child: Text("Welcome",
-                    style: titleSryle.copyWith(
-                        color: Colors.black, fontWeight: FontWeight.normal))),
-            SizedBox(
-              height: MediaQuery.of(context).size.height / 10,
-            ),
-            DelayedDisplay(
-              delay: Duration(seconds: 2),
-              child: Padding(
-                padding: const EdgeInsets.only(right: 40),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "RE",
-                      style: titleSryle,
-                    ),
-                    Icon(
-                      Icons.redo,
-                      color: Colors.red,
-                      size: 50,
-                    ),
-                  ],
                 ),
               ),
-            ),
-            DelayedDisplay(
-              // slidingBeginOffset: Offset(0.0, -0.35),
-              delay: Duration(seconds: 2),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 45),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    RotatedBox(
-                        quarterTurns: -90,
-                        child: Icon(Icons.redo, color: Colors.red, size: 50)),
-                    Text(
-                      "YCLE",
-                      style: titleSryle,
-                    )
-                  ],
+              DelayedDisplay(
+                // slidingBeginOffset: Offset(0.0, -0.35),
+                delay: Duration(seconds: 2),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 45),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      RotatedBox(
+                          quarterTurns: -90,
+                          child: Icon(Icons.redo, color: Colors.red, size: 50)),
+                      Text(
+                        "YCLE",
+                        style: titleSryle,
+                      )
+                    ],
+                  ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height / 6,
-            ),
-            Text(
-              "This appliocation is",
-              style: textStyle,
-            ),
-            Text("design to make your live easier", style: textStyle),
-            Text("and our planet is cleaner", style: textStyle),
-            SizedBox(
-              height: MediaQuery.of(context).size.height / 18,
-            ),
-            reusableButton(
-                color: isButtonTap ? Colors.white : null,
-                title: "Continue",
-                onpress: () {
-                  setState(() {
-                    isButtonTap = true;
-                  });
-                  Future.delayed(
-                      Duration(seconds: 1),
-                      () => Navigator.push(
-                          context,
-                          PageTransition(
-                              child: NextPage1(),
-                              type: PageTransitionType.rightToLeft)));
-                })
-          ],
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 6,
+              ),
+              Text(
+                "This appliocation is",
+                style: textStyle,
+              ),
+              Text("design to make your live easier", style: textStyle),
+              Text("and our planet is cleaner", style: textStyle),
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 18,
+              ),
+              reusableButton(
+                  color: isButtonTap ? Colors.white : null,
+                  title: "Continue",
+                  onpress: () {
+                    setState(() {
+                      isButtonTap = true;
+                    });
+                    Future.delayed(
+                        Duration(seconds: 1),
+                        () => Navigator.push(
+                            context,
+                            PageTransition(
+                                child: NextPage1(),
+                                type: PageTransitionType.rightToLeft)));
+                  })
+            ],
+          ),
         ),
       ),
     );
